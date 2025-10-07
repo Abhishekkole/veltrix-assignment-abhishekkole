@@ -1,11 +1,10 @@
 FROM node:22-alpine
-WORKDIR /dist/app
+WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
 RUN npm install -g pm2
-RUN mkdir -p /app/logs
+RUN mkdir -p logs
 EXPOSE 3000
-EXPOSE 4000
 CMD ["pm2-runtime", "start", "ecosystem.config.js"]
