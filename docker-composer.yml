@@ -5,9 +5,11 @@ services:
     build: .
     container_name: veltrix-orchestrator
     ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
+      - "3000:3000" # Runs app.js
+      - "4000:4000" # Runs api.js
+    env_file:
+      - .env
     volumes:
       - .:/app
-      - /app/node_modules
+      - ./logs:/app/logs
+    restart: unless-stopped
