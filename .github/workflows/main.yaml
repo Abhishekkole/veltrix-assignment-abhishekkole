@@ -35,12 +35,12 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
+          docker build -t ghcr.io/abhishekkole/veltrix-orchestrator:${{ github.sha }} .
 
       - name: Push Docker image
         run: |
-          docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
+          docker push ghcr.io/abhishekkole/veltrix-orchestrator:${{ github.sha }}
 
       - name: Output image URL
         run: |
-          echo "Image pushed: $REGISTRY/$IMAGE_NAME:${{ github.sha }}"
+          echo "Image pushed:ghcr.io/abhishekkole/veltrix-orchestrator:${{ github.sha }}"
